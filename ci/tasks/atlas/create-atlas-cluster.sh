@@ -32,18 +32,20 @@ NEW_CURL_COMMAND=$(sed  "s~ATLAS_CLUSTER_NAME~${ATLAS_CLUSTER_NAME}~g" <<< $NEW_
 
 
 result=$(eval curl $NEW_CURL_COMMAND)
-  if [[ $result == *"error"* ]]; then
+if [[ $result == *"error"* ]]; then
       echo $result
       if [[ $result == *"GROUP_ALREADY_EXISTS"* ]]; then
           echo "Cluster already exist"
           exit 0
+      fi
       exit 1
-  else
+else
        access_token=$(jq .id <<< $result)
        TRIMMED_RESULT="${access_token%\"}"
        TRIMMED_RESULT="${TRIMMED_RESULT#\"}"
+       echo $TRIMMED_RESULT
        eval $responsevar="'$TRIMMED_RESULT'"
-  fi
+fi
 
 echo "Waiting until Cluster is successfully created "
 
