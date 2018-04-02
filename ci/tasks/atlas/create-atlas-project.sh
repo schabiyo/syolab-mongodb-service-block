@@ -10,7 +10,7 @@ createProject(){
   CURL_COMMAND="-u 'username:ATLAS_API_KEY' --digest -H 'Content-Type: application/json' -X POST 'https://cloud.mongodb.com/api/atlas/v1.0/groups' --data '{ 'name' : 'ATLAS_PROJECT_NAME' }'"
   # local variable x and y with passed args
   local api_key=$1
-  local projedct_name=$2
+  local project_name=$2
   local responsevar=$3
 
   NEW_CURL_COMMAND=$(sed  "s@ATLAS_API_KEY@${api_key}@g" <<< $CURL_COMMAND)
