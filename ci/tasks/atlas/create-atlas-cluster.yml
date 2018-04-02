@@ -15,4 +15,4 @@ inputs:
     - name: opsmgr-pipeline
 
 run:
-    path: syolab-mongodb-cqrs/ci/tasks/atlas/create-atlas-cluster.sh
+    path: source-code/ci/tasks/atlas/create-atlas-cluster.sh
