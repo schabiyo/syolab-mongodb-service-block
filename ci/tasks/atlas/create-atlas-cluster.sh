@@ -52,7 +52,7 @@ echo "Waiting until Cluster is successfully created ";
 for i in {1..5}
 do
    #Get the cluster Status
-   getCluster $ATLAS_USERNAME $ATLAS_API_KEY projectId $ATLAS_CLUSTER_NAME state
+   getCluster $ATLAS_USERNAME $ATLAS_API_KEY $projectId $ATLAS_CLUSTER_NAME state
    echo "provisioningState:"$state
    if [[ $state == "IDLE" ]]; then
      portal_url=$(jq .mongoURI <<< $result)
