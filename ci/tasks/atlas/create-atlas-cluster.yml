@@ -1,0 +1,18 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: 
+    repository: schabiyo/mongodb-azure-ci 
+    tag: latest
+
+params:
+  ATLAS_API_KEY:
+  ATLAS_PROJECT_NAME:
+  
+inputs:
+    - name: opsmgr-pipeline
+
+run:
+    path: syolab-mongodb-cqrs/ci/tasks/atlas/create-atlas-cluster.sh
