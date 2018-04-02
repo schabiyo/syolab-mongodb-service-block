@@ -6,7 +6,7 @@
 
 
 # gloabal variables
-createProject(){
+getCluster(){
   CURL_COMMAND="-u 'ATLAS_USERNAME:ATLAS_API_KEY' --digest -H 'Content-Type: application/json' -X GET 'https://cloud.mongodb.com/api/atlas/v1.0/groups/GROUP-ID/clusters/CLUSTER-NAME'"
   # local variable x and y with passed args
   local username=$1
