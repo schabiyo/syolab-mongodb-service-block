@@ -16,7 +16,7 @@ createProject(){
   local responsevar=$5
 
   NEW_CURL_COMMAND=$(sed  "s@ATLAS_API_KEY@${api_key}@g" <<< $CURL_COMMAND)
-  NEW_CURL_COMMAND=$(sed  "s@ATLAS_ORG_ID@${org_id}@g" <<< $CURL_COMMAND)
+  NEW_CURL_COMMAND=$(sed  "s@ATLAS_ORG_ID@${org_id}@g" <<< $NEW_CURL_COMMAND)
   NEW_CURL_COMMAND=$(sed  "s@ATLAS_PROJECT_NAME@${project_name}@g" <<< $NEW_CURL_COMMAND)
   NEW_CURL_COMMAND=$(sed  "s~ATLAS_USERNAME~${username}~g" <<< $NEW_CURL_COMMAND)
 
