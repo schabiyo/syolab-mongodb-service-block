@@ -7,7 +7,7 @@ source source-code/ci/tasks/atlas/get-cluster.sh
 
 createProject $ATLAS_USERNAME $ATLAS_API_KEY $ATLAS_ORG_ID $ATLAS_PROJECT_NAME projectId
 
-CURL_COMMAND="curl -u 'ATLAS_USERNAME:ATLAS_API_KEY' --digest -H 'Content-Type: application/json' -X POST 'https://cloud.mongodb.com/api/atlas/v1.0/groups/ATLAS_PROJECT_ID/clusters' --data '
+CURL_COMMAND="-u 'ATLAS_USERNAME:ATLAS_API_KEY' --digest -H 'Content-Type: application/json' -X POST 'https://cloud.mongodb.com/api/atlas/v1.0/groups/ATLAS_PROJECT_ID/clusters' --data '
 {
   \"name\" : \"ATLAS_CLUSTER_NAME\",
   \"diskSizeGB\" : 160,
@@ -45,7 +45,7 @@ result=$(eval curl $NEW_CURL_COMMAND)
        eval $responsevar="'$TRIMMED_RESULT'"
   fi
 
-echo "Waiting until Cluster is successfully created ";
+echo "Waiting until Cluster is successfully created "
 
 #Try for a maximum of 5 minutes
 ## sleep in bash for loop ##
@@ -63,7 +63,7 @@ do
      sleep 1m
    else
      #The creation failes for a raison
-     echo"==>The cluster provisioning failed for a raison.";
+     echo "==>The cluster provisioning failed for a raison.";
      exit 1
    fi
 done
