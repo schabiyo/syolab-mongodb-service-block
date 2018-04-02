@@ -8,6 +8,7 @@ image_resource:
     tag: latest
 
 params:
+  ATLAS_USERNAME:
   ATLAS_API_KEY:
   ATLAS_PROJECT_NAME:
   
