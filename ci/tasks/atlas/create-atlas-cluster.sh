@@ -39,11 +39,6 @@ if [[ $result == *"error"* ]]; then
     exit 0
   fi
   exit 1
-else
-  access_token=$(jq .id <<< $result)
-  TRIMMED_RESULT="${access_token%\"}"
-  TRIMMED_RESULT="${TRIMMED_RESULT#\"}"
-  eval $responsevar="'$TRIMMED_RESULT'"
 fi
 
 echo "Waiting until Cluster is successfully created "
