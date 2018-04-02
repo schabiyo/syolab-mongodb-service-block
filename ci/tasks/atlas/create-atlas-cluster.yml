@@ -12,7 +12,7 @@ params:
   ATLAS_PROJECT_NAME:
   
 inputs:
-    - name: opsmgr-pipeline
+    - name: source-code
 
 run:
     path: source-code/ci/tasks/atlas/create-atlas-cluster.sh
