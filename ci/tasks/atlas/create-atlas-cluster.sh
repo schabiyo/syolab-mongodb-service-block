@@ -5,7 +5,7 @@ set -e -x
 source source-code/ci/tasks/atlas/create-atlas-project.sh
 
 
-createProject $ATLAS_USERNAME $ATLAS_API_KEY $ATLAS_PROJECT_NAME projectId
+createProject $ATLAS_USERNAME $ATLAS_API_KEY $ATLAS_ORG_ID $ATLAS_PROJECT_NAME projectId
 
 CURL_COMMAND="curl -u 'ATLAS_USERNAME:ATLAS_API_KEY' --digest -H 'Content-Type: application/json' -X POST 'https://cloud.mongodb.com/api/atlas/v1.0/groups/ATLAS_PROJECT_ID/clusters' --data '
 {
