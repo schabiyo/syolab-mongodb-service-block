@@ -28,6 +28,6 @@ getCluster(){
       access_token=$(jq .stateName <<< $result)
       TRIMMED_RESULT="${access_token%\"}"
       TRIMMED_RESULT="${TRIMMED_RESULT#\"}"
-      eval $responsevar="'$TRIMMED_RESULT'"
+      eval $status="'$TRIMMED_RESULT'"
   fi
 }
