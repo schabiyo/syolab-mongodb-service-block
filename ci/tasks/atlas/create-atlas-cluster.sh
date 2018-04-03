@@ -32,13 +32,12 @@ NEW_CURL_COMMAND=$(sed  "s~ATLAS_CLUSTER_NAME~${ATLAS_CLUSTER_NAME}~g" <<< $NEW_
 
 
 result=$(eval curl $NEW_CURL_COMMAND)
-if [[ $result == *"error"* ]]; then
-  echo $result
-  if [[ $result == *"GROUP_ALREADY_EXISTS"* ]]; then
+if [[ $result == *"GROUP_ALREADY_EXISTS"* ]]; then
+  echo "Cluster already exist"
+  exit 0
+elif [[ $result == *"error"* ]]; then
     echo "Cluster already exist"
-    exit 0
-  fi
-  exit 1
+    exit 1
 fi
 
 echo "Waiting until Cluster is successfully created "
@@ -51,8 +50,8 @@ do
    getCluster $ATLAS_USERNAME $ATLAS_API_KEY $projectId $ATLAS_CLUSTER_NAME state
    echo "provisioningState:"$state
    if [[ $state == "IDLE" ]]; then
-     portal_url=$(jq .mongoURI <<< $result)
-     MESSAGE="Cluster was successully created and can be accessed using the following URL:${portal_url}" ; simple_green_echo
+     mongoUri=$(jq .mongoURI <<< $result)
+     echo "Cluster was successully created and can be accessed using the following URL:${mongoUri}" ;
      exit 0
    elif (( $state == "CREATING" )); then
      echo "Waiting..."
